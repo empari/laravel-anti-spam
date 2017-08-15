@@ -52,4 +52,10 @@ trait Spammable
             return array_get($modelArray, $column);
         }, $this->getSpamColumns()));
     }
+
+    public function isDomainBlackList($domain)
+    {
+        $domains = config('anti-spam.blacklist.domains');
+        return in_array($domain, $domains);
+    }
 }
