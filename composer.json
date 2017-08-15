@@ -1,6 +1,6 @@
 {
     "name": "empari/laravel-anti-spam",
-	"version": "1.0.2",
+	"version": "1.0.3",
     "description": "A simple spam prevention for Laravel applications.",
     "keywords": ["empari", "laravel", "library", "anti", "spam", "prevention"],
     "type": "library",
@@ -28,7 +28,7 @@
     },
     "require": {
         "php": "^7.0",
-        "laravel/framework": "^5.4",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/support": "^5.4"
     }
 }
