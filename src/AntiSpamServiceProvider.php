@@ -22,13 +22,18 @@ class AntiSpamServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Configs
+        $this->publishes([
+            __DIR__.'/../config/anti-spam.php' => config_path('anti-spam.php'),
+        ], 'configs');
+
         // Migrations
         $this->publishes([
             __DIR__ . '/../database/migrations' => base_path('database/migrations')
         ], 'migrations');
 
+        // Services
         $this->app->bind(SpamServiceInterface::class, AkismetSpamService::class);
-
         $this->app->singleton(SpamServiceInterface::class, function ($app) {
             return new AkismetSpamService(new \GuzzleHttp\Client);
         });
