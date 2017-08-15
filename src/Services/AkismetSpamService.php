@@ -6,6 +6,7 @@ use Empari\Laravel\AntiSpam\Exceptions\FailedToCheckSpamException;
 use Empari\Laravel\AntiSpam\Exceptions\FailedToMarkAsHamException;
 use Empari\Laravel\AntiSpam\Exceptions\FailedToMarkAsSpamException;
 use Empari\Laravel\AntiSpam\Exceptions\InvalidApiKeyException;
+use Illuminate\Support\Facades\Log;
 
 class AkismetSpamService implements SpamServiceInterface
 {
@@ -27,6 +28,8 @@ class AkismetSpamService implements SpamServiceInterface
         if (!in_array($response, ['true', 'false'])) {
             throw new FailedToCheckSpamException();
         }
+
+        Log::info('Checked if email is spam', $parameters);
         return $response === 'true';
     }
 
