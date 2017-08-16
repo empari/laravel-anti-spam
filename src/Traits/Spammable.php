@@ -53,8 +53,19 @@ trait Spammable
         }, $this->getSpamColumns()));
     }
 
-    public function isDomainBlackList($domain)
+    public function isDomainBlackList($domain = null)
     {
+        if ($domain == null) {
+            $class_vars = get_object_vars($this)['attributes'];
+
+            if (in_array($class_vars, ['email'])) {
+                return false;
+            }
+
+            $domain = explode('@', $this->email);
+            $domain = end($domain);
+        }
+
         $domains = config('anti-spam.blacklist.domains');
         return in_array($domain, $domains);
     }
