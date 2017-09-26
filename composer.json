@@ -29,6 +29,6 @@
     "require": {
         "php": "^7.0",
         "guzzlehttp/guzzle": "^6.3",
-        "illuminate/support": "^5.4"
+        "illuminate/support": "^5.5"
     }
 }
